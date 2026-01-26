@@ -15,12 +15,12 @@ const Layout = ({ children }: { children : React.ReactNode }) => {
             <section className="auth-right-section">
                 <div className="z-10 relative lg:mt-4 lg:mb-16">
                     <blockquote className="auth-blockquote">
-                        Signalist turned my watchlist into a winning list. The alerts are spot-on, and I feel more confident making moves in the market
+                        Hi Bros
                     </blockquote>
                     <div className="flex items-center justify-between">
                         <div>
-                            <cite className="auth-testimonial-author">- Ethan R.</cite>
-                            <p className="max-md:text-xs text-gray-500">Retail Investor</p>
+                            <cite className="auth-testimonial-author">- ME</cite>
+                            <p className="max-md:text-xs text-gray-500">PRO Investor</p>
                         </div>
                         <div className="flex items-center gap-0.5">
                             {[1, 2, 3, 4, 5].map((star) => (
