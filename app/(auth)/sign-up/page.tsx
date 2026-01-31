@@ -2,6 +2,7 @@
 
 import React from 'react';
 
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
 import { CountrySelectField } from '@/components/forms/CountrySelectField';
@@ -9,6 +10,7 @@ import FooterLink from '@/components/forms/FooterLink';
 import InputField from '@/components/forms/InputField';
 import SelectField from '@/components/forms/SelectField';
 import { Button } from '@/components/ui/button';
+import { signUpWithEmail } from '@/lib/actions/auth.actions';
 import {
   INVESTMENT_GOALS,
   PREFERRED_INDUSTRIES,
@@ -16,6 +18,7 @@ import {
 } from '@/lib/constants';
 
 const SignUp = () => {
+    const router = useRouter();
     const {
         register,
         handleSubmit,
@@ -34,9 +37,10 @@ const SignUp = () => {
         mode: 'onBlur'
     }, );
 
-    const onSubmit = async(data:SignInFormData)=>{
+    const onSubmit = async(data:SignUpFormData)=>{
         try{
-            console.log(data);
+            const result = await signUpWithEmail(data);
+            if(result.success) router.push('/');
         }catch(e){
             console.error(e);
         }

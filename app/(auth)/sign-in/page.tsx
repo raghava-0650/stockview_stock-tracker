@@ -1,12 +1,15 @@
 'use client'
 
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 
 import FooterLink from '@/components/forms/FooterLink';
 import InputField from '@/components/forms/InputField';
 import { Button } from '@/components/ui/button';
+import { signInWithEmail } from '@/lib/actions/auth.actions';
 
 const page = () => {
+    const router = useRouter();
     const {
             register,
             handleSubmit,
@@ -19,13 +22,14 @@ const page = () => {
         mode: 'onBlur'
     }, );
     
-        const onSubmit = async(data:SignInFormData)=>{
-            try{
-                console.log(data);
-            }catch(e){
-                console.error(e);
-            }
+    const onSubmit = async(data:SignInFormData)=>{
+        try{
+            const result = await signInWithEmail(data); 
+            if(result.success) router.push('/');
+        }catch(e){
+            console.error(e);
         }
+    }
   return (
     <>
             <h1 className='form-title'>Log In Your Account</h1>
